@@ -1,0 +1,36 @@
+import mysql.connector
+
+
+connector = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='test',
+    database='db2'
+)
+
+action = connector.cursor()
+
+def insertNewFolder():
+
+    nameOfNode = str(input())
+    sql = "INSERT INTO db2.folder (nameOfNode,parent) VALUES (%s,%s)"
+    print(type(nameOfNode))
+    nameOfNode = (nameOfNode,6)
+    print(sql)
+    action.execute(sql, nameOfNode)
+    connector.commit()
+
+    counter = 2
+    sql = "update folder SET parent = %s where id = ?"
+    vars = (counter, id)
+
+    data2 = (counter, counter + 1)
+#    action.execute(sql, data2)
+    counter + 1
+
+
+insertNewFolder()
+
+
+
+#Select (id-1) from folder order by id DESC LIMIT 1;
